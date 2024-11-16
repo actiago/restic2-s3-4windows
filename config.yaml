@@ -1,0 +1,9 @@
+restic:
+  path: "C:\\restic\\restic.exe"  # Caminho para o executável do Restic
+  s3_bucket_url: "s3.amazonaws.com/s3-bucket"  # URL do bucket S3
+
+
+backup:
+  sources:
+    - "C:\\Users\\tiago\\Documents"
+  log_dir: "C:\\Users\\tiago\\Temp\\logs\\restic_s3\\"

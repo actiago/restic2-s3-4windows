@@ -1,0 +1,4 @@
+pyyaml
+keyring
+boto3
+requests
