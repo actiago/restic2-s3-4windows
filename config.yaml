@@ -2,8 +2,28 @@ restic:
   path: "C:\\restic\\restic.exe"  # Caminho para o executável do Restic
   s3_bucket_url: "s3.amazonaws.com/s3-bucket"  # URL do bucket S3
 
-
 backup:
   sources:
-    - "C:\\Users\\tiago\\Documents"
-  log_dir: "C:\\Users\\tiago\\Temp\\logs\\restic_s3\\"
+    - "C:\\Users\\username\\Documents"
+    - "C:\\Users\\username\\Books\\myBook.pdf"
+  log_dir: "C:\\Users\\username\\Temp\\logs\\restic_s3\\"
+
+check:
+  enable: true
+
+purge:
+  enable: true
+  keep_daily: 7
+  keep_weekly: 4
+  keep_monthly: 12
+
+ntfy:
+  url: "https://ntfy.sh"  # URL do servidor ntfy
+  topic: "my_ntfy_topic"  # Tópico do ntfy para notificações
+
+aws_parameter_store:
+  restic_password: "restic_password"  # Nome do parâmetro da senha do Restic
+  s3_credentials: "restic_s3_credentials"  # Nome do parâmetro das credenciais S3
+
+config_backup:
+  dir: "C:\\Users\\username\\backup_win_s3\\config_backups"
