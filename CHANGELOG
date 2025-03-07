@@ -1,0 +1,38 @@
+# Changelog
+
+Este arquivo documenta as mudanças significativas realizadas no projeto de backup automático com Restic e S3 para Windows.
+
+---
+
+## [1.0.0] - 07-03-2025
+
+### Adicionado
+
+- **Segurança na Funcionalidade de Backup**: Ajuste para que as variáveis de ambiente sejam temporárias.
+- **Funcionalidade de Verificação (Check)**: Adição de uma tarefa semanal para verificar a integridade do repositório de backups.
+- **Funcionalidade de Purge**: Implementação de uma tarefa quinzenal para remover snapshots antigos de acordo com a política de retenção.
+- **Backup de Configuração**: Adição de uma função para fazer backup do arquivo `config.yaml` em um diretório especificado.
+- **Script de Instalação**: Ajuste do script `install.ps1` para configurar o ambiente e agendar as tarefas no Windows.
+
+### Alterado
+
+- **Configuração Flexível para notificações**: Movimento da URL do ntfy e do nome do tópico para o arquivo `config.yaml`.
+- **Configuração Flexível para Parameter Store**: Movimento da definição dos Parameter Store para o arquivo `config.yaml`.
+- **Logs Consolidados**: Alteração na função `run_restic_command` para gravar todos os logs em um único arquivo por tipo de operação (backup, check, purge).
+- **Tarefa Check**: Adiciona tarefa que verifica a integridade do repositório de backup.
+- **Tarefa Quinzenal**: Substituição da tarefa mensal de purge por uma tarefa quinzenal, usando dois triggers semanais alternados.
+
+### Corrigido
+
+- **Erro na Função `backup_config`**: Correção da falta de importação do módulo `shutil`.
+- **Erro no Trigger Mensal**: Substituição do trigger mensal por triggers semanais para evitar problemas de compatibilidade no agendador de tarefas do Windows.
+
+---
+
+## [0.1.0] - 16-11-2024
+
+### Adicionado
+
+- **Versão Inicial**: Primeira versão do projeto com a funcionalidade básica de backup.
+- **Estrutura Inicial do Projeto**: Criação dos arquivos iniciais, incluindo `backup_restic.py`, `config.yaml`, `requirements.txt` e `install.ps1`.
+- **Integração com AWS Parameter Store**: Uso do AWS Systems Manager Parameter Store para armazenar credenciais e senhas de forma segura.
